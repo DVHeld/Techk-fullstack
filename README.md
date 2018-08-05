@@ -39,6 +39,9 @@ Se requiere obtener del [sitio web](http://books.toscrape.com/index.html) la sig
 
 ***Nota:*** Se recomienda usar las librerías [Requests](http://docs.python-requests.org/en/master/) y [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) para resolver este punto.
 
+#### *Supuestos*
+* Sólo se obtiene la información directamente accesible en el [enlace entregado](http://books.toscrape.com/index.html), es decir, sólo lo que se puede obtener desde la primera página del home. No se obtendrá toda la información que contiene el sitio si no es accesible desde dicho lugar, pues esto es lo que se especificó en las instrucciones.
+
 ### *Backend*
 
 La información obtenida por el scraper (en la sección anterior) debe ser almacenada en una BBDD sqlite. Para ello se debe modelar la BBDD, crear los modelos de Django y sus respectivas migraciones.
