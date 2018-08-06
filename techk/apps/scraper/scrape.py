@@ -13,4 +13,4 @@ r = requests.get('http://books.toscrape.com/index.html')
         a_href_category = a.get_text(strip=True)
         if a_href_category not in categories:
             categories.append({'id': id, 'name': a_href_category})
-            id++
+            id += 1
