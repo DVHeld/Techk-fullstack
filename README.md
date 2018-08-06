@@ -40,7 +40,8 @@ Se requiere obtener del [sitio web](http://books.toscrape.com/index.html) la sig
 ***Nota:*** Se recomienda usar las librerías [Requests](http://docs.python-requests.org/en/master/) y [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) para resolver este punto.
 
 #### *Supuestos*
-* Sólo se obtiene la información directamente accesible en el [enlace entregado](http://books.toscrape.com/index.html), es decir, sólo lo que se puede obtener desde la primera página del home. No se obtendrá toda la información que contiene el sitio si no es accesible desde dicho lugar, pues esto es lo que se especificó en las instrucciones.
+* Sólo se obtiene la información directamente accesible en el [enlace entregado](http://books.toscrape.com/index.html), es decir, sólo lo que se puede obtener desde la primera página del home. No se obtendrá toda la información que contiene el sitio si no es accesible desde dicho lugar, pues esto es lo que se especificó en las instrucciones. Sólo se obtendrá de forma indirecta la información que se especificó como requerida que no se pueda obtener de forma directa. De todos modos en este caso obtener la información del resto de libros no implicaría mucho trabajo adicional.
+* Sólo se almacenará la URL de la thumbnail, pues no se especifica si se requiere almacenar sólo eso o el archivo de imagen propiamente tal, además de que en el json de muestra sólo se almacena la URL. Estoy asumiendo el caso más simple, aunque almacenar el archivo de imagen no requiere mucho trabajo adicional.
 
 ### *Backend*
 
