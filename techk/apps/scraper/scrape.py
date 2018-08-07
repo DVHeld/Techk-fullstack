@@ -27,7 +27,11 @@ for book in book_list:
     r_book = requests.get(book_url)
     soup_book = BeautifulSoup(r_book.content)
 
+    # Stripped text of the first <a> tag containing the 'category/books/' substring in its href attribute.
+    # This will be the category contained in the breadcrumbs of the book's page.
     book_category = soup_book.select('a[href*="category/books/"]')[0].get_text(strip=True)
+
+    # Search for the category's id in the categories list that we previously scraped
     for category in [x for x in categories if x['name'] == book_category]:
         book_category_id = category['id']
         break
