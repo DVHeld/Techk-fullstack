@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from bs4 import BeautifulSoup
 import requests
+from .models import Category, Book
     
 def index(request):
     base_url = 'http://books.toscrape.com/'
