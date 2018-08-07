@@ -3,11 +3,11 @@ import requests
 
 
 def scrape():
-    """Returns dictionary with two entries, categories and books.
+    '''Returns dictionary with two entries, categories and books.
     The categories entry contains a list of dictionaries, each containing id and name.
     The books entry contains a list of dictionaries, each containing id, category_id, title,
-    thumbnail_url, price, stock, product_description, and upc."""
-    
+    thumbnail_url, price, stock, product_description, and upc.'''
+
     base_url = 'http://books.toscrape.com/'
     r = requests.get(base_url + 'index.html')
     soup = BeautifulSoup(r.content)
