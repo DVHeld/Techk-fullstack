@@ -25,18 +25,21 @@ def index(request):
     id = 1
 
     for book in book_list:
-        html += '</br></br> =============================='
         # We look for the book's data in its own page
         book_url = base_url + book.find('a')['href']
         r_book = requests.get(book_url)
         soup_book = BeautifulSoup(r_book.content)
 
+        # Stripped text of the first <a> tag containing the 'category/books/' substring in its href attribute.
+        # This will be the category contained in the breadcrumbs of the book's page.
         book_category = soup_book.select('a[href*="category/books/"]')[0].get_text(strip=True)
-
+        
+        # Search for the category's id in the categories list that we previously scraped
         for category in [x for x in categories if x['name'] == book_category]:
             book_category_id = category['id']
             break
 
+        html += '</br></br> =============================='
         html += '</br></br> ========= book_category =========</br></br>'
         html += str(book_category_id) + ': ' + book_category
         
