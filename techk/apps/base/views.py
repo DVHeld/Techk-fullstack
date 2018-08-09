@@ -1,7 +1,10 @@
+from apps.scraper.models import Category, Book
+from apps.scraper import scrape
 from django.http import HttpResponse
+
 from bs4 import BeautifulSoup
 import requests
-from .models import Category, Book
+
     
 def index(request):
     base_url = 'http://books.toscrape.com/'
@@ -20,7 +23,7 @@ def index(request):
     
     books = []
     book_list = soup(class_='product_pod')
-    html = ''
+    #html = ''
     id = 1
 
     for book in book_list:
@@ -34,33 +37,33 @@ def index(request):
             book_category_id = category['id']
             break
 
-        html += '</br></br> =============================='
-        html += '</br></br> ========= book_category =========</br></br>'
-        html += str(book_category_id) + ': ' + book_category
+        #html += '</br></br> =============================='
+        #html += '</br></br> ========= book_category =========</br></br>'
+        #html += str(book_category_id) + ': ' + book_category
         
         book_title = soup_book.find(class_='product_main').h1.get_text(strip=True)
-        html += '</br></br> ========= book_title =========</br></br>'
-        html += book_title
+        #html += '</br></br> ========= book_title =========</br></br>'
+        #html += book_title
 
         book_thumbnail = base_url + soup_book.find('img')['src'][6:]
-        html += '</br></br> ========= book_thumbnail =========</br></br>'
-        html += book_thumbnail + '</br></br>' + '<img src="' + book_thumbnail + '">'
+        #html += '</br></br> ========= book_thumbnail =========</br></br>'
+        #html += book_thumbnail + '</br></br>' + '<img src="' + book_thumbnail + '">'
 
         book_price = soup_book.find(class_='price_color').get_text(strip=True)
-        html += '</br></br> ========= book_price =========</br></br>'
-        html += book_price
+        #html += '</br></br> ========= book_price =========</br></br>'
+        #html += book_price
 
         book_stock = True if soup_book.find(class_='instock availability').get_text(strip=True)[:8] == 'In stock' else False
-        html += '</br></br> ========= book_stock =========</br></br>'
-        html += 'true' if book_stock == True else 'false'
+        #html += '</br></br> ========= book_stock =========</br></br>'
+        #html += 'true' if book_stock == True else 'false'
 
         book_description = soup_book.find(id='product_description').find_next_sibling('p').get_text(strip=True)
-        html += '</br></br> ========= book_description =========</br></br>'
-        html += book_description
+        #html += '</br></br> ========= book_description =========</br></br>'
+        #html += book_description
 
         book_UPC = soup_book.find('td').get_text(strip=True)
-        html += '</br></br> ========= book_UPC =========</br></br>'
-        html += book_UPC
+        #html += '</br></br> ========= book_UPC =========</br></br>'
+        #html += book_UPC
 
         books.append({
             'id': id
@@ -73,6 +76,8 @@ def index(request):
             , 'upc': book_UPC
         })
         id += 1
+
+    html = ''
 
     # Placeholder html etc
     html += '<center></br></br>=== END ===</br></br>'
