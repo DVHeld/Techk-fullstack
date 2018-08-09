@@ -3,10 +3,57 @@ import requests
 
 
 def scrape():
-    '''Returns dictionary with two entries, categories and books.
-    The categories entry contains a list of dictionaries, each containing id and name.
-    The books entry contains a list of dictionaries, each containing id, category_id, title,
-    thumbnail_url, price, stock, product_description, and upc.'''
+    '''Description
+    The scrape() function scrapes http://books.toscrape.com/index.html and returns a dictionary
+    with two entries, categories and books, both containing data scraped from the mentioned website.
+
+    Syntax
+    scrape()
+
+    Parameters:
+    This function takes no parameters.
+
+    Return Value
+    This function returns a dictionary returns with two entries with the keys "categories" and "books",
+    each of which contains a list of dictionaries. The "categories" entry contains a list of
+    dictionaries, each containing the keys "id" and "name". The "books" entry contains a list of
+    dictionaries, each containing the keys "id", "category_id", "title", "thumbnail_url", "price", "stock",
+    "product_description", and "upc".
+    
+    Example
+    The following example shows the usage of the scrape() function:
+    
+    result = scrape()
+    print result
+    
+    When run, the above program produces a result similar to the following, depending on the contents on the aforementioned website:
+    
+    [{
+        "categories": [
+            {
+                "id": 1,
+                "name": "Travel"
+            }, {
+                "id": 2,
+                "name": "Mystery"
+            }, {
+                "id": 3,
+                "name": "Historical Fiction"
+            }
+        ],
+        "books": [
+            {
+                "id": 1;
+                "category_id": 1,
+                "title": "It's Only the Himalayas",
+                "thumbnail_url": "http://books.toscrape.com/media/cache/6d/41/6d418a73cc7d4ecfd75ca11d854041db.jpg",
+                "price": "£45.17",
+                "stock": true,
+                "product_description": "Wherever you go, whatever you do, just ...",
+                "upc": "a22124811bfa8350"
+            }
+        ]
+    }]'''
 
     base_url = 'http://books.toscrape.com/'
     r = requests.get(base_url + 'index.html')
