@@ -58,7 +58,7 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 
 ¿Qué considera?
 * Un botón que inicie/ejecute el scraper para obtener los datos del sitio web(*)
-* Un listado de Categorías obtenidas por el scrapers.
+* Un listado de Categorías obtenidas por el scraper.
 * Al seleccionar una categoría, la tabla sólo mostrará libros de esa categoría
 * La tabla debe tener un buscador por los atributos que posee
 * Se debe poder eliminar registros de la tabla que se presente
@@ -98,7 +98,7 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 ```
 
 #### *Supuestos*
-* Placeholder
+* Asumo que puedo usar otras librerías, por lo que usaré Django Bootstrap 3 para ofrecer una mejor presentación.
 
 ## Restricciones
 ---
