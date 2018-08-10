@@ -1,4 +1,5 @@
 '''View for base app.'''
+'''base/views.py'''
 from django.http import HttpResponse
 from apps.scraper.models import Category, Book
 from apps.scraper.scrape import scrape
