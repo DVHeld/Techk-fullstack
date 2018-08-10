@@ -1,4 +1,3 @@
-'''View for base app.'''
 '''base/views.py'''
 from django.http import HttpResponse
 from apps.scraper.models import Category, Book
@@ -13,32 +12,41 @@ def index(request):
     html = ''
 
     html += '<h1>==========Categories==========</h1></br>'
+    html += '<table><thead><td>ID</td><td>Name</td></thead><tbody>'
     categories = Category.objects.all()
     if categories:
         for category in categories:
-            html += '</br>' + category.name + ': ' + str(category.id)
+            html += '<tr><td><a href="">' + str(category.id) + '</a></td><td><a href="">'
+            html += category.name + '</a></td></tr>'
+    html += '</tbody></table>'
 
-    html += '</br></br><h1>==========Books==========</h1></br>'
+    html += '</td></br><h1>==========Books==========</h1></br>'
+    html += '<table><thead><td></td><td>ID</td><td>Category Name</td><td>Category ID</td><td>Title'
+    html += '</td><td>Thumbnail URL</td><td>Price</td><td>Stock</td><td>Description</td><td>UPC'
+    html += '</td></thead><tbody>'
     books = Book.objects.all()
     for book in books:
-        html += '</br>=============================='
-        html += '</br></br>========= ID =========</br>'
-        html += str(book.id)
-        html += '</br></br>========= Category =========</br>'
+        #html += '</br>=============================='
+        #html += '</br></br>========= ID =========</br>'
+        html += '<tr><td><button type="button">Delete</button></td>'
+        html += '<td>' + str(book.id) + '</td>'
+        #html += '</br></br>========= Category =========</br>'
         category_name = categories.get(id=book.category_id).name
-        html += category_name + ': ' + str(book.category_id)
-        html += '</br></br>========= Title =========</br>'
-        html += book.title
-        html += '</br></br>========= Thumbnail =========</br>'
-        html += book.thumbnail_url + '</br></br>' + '<img src="' + book.thumbnail_url + '">'
-        html += '</br></br>========= Price =========</br>'
-        html += book.price
-        html += '</br></br>========= Stock =========</br>'
-        html += 'true' if book.stock else 'false'
-        html += '</br></br>========= Description =========</br>'
-        html += book.product_description
-        html += '</br></br>========= UPC =========</br>'
-        html += book.upc + '</br>'
+        html += '<td>' + category_name + '</td><td>' + str(book.category_id) + '</td>'
+        #html += '</br></br>========= Title =========</br>'
+        html += '<td>' + book.title + '</td>'
+        #html += '</br></br>========= Thumbnail =========</br>'
+        html += '<td>' + book.thumbnail_url + '</td>'
+        #html += '</br></br>========= Price =========</br>'
+        html += '<td>' + book.price + '</td>'
+        #html += '</br></br>========= Stock =========</br>'
+        html += '<td>' + 'True' if book.stock else 'False' + '</td>'
+        #html += '</br></br>========= Description =========</br>'
+        html += '<td>' + book.product_description + '</td>'
+        #html += '</br></br>========= UPC =========</br>'
+        html += '<td>' + book.upc + '</td></tr>'
+    
+    html += '</tbody></table>'
 
     # Placeholder html etc
     html += '<center></br></br>=== END ===</br></br><img src="http://juliareda.eu/wp-content/uploa'
