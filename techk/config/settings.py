@@ -148,7 +148,8 @@ BOOTSTRAP3 = {
     # The complete URL to the Bootstrap JavaScript file (None means derive it from base_url)
     'javascript_url': None,
 
-    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap3.html)
+    # Put JavaScript in the HEAD section of the HTML document (only relevant if
+    # you use bootstrap3.html)
     'javascript_in_head': False,
 
     # Include jQuery with Bootstrap JavaScript (affects django-bootstrap3 template tags)
@@ -160,12 +161,6 @@ BOOTSTRAP3 = {
     # Field class to use in horizontal forms
     'horizontal_field_class': 'col-md-9',
 
-    # Set HTML required attribute on required fields, for Django <= 1.8 only
-    'set_required': True,
-
-    # Set HTML disabled attribute on disabled fields, for Django <= 1.8 only
-    'set_disabled': False,
-
     # Set placeholder attributes to label if no placeholder is provided.
     # This also considers the 'label' option of {% bootstrap_field %} tags.
     'set_placeholder': True,
@@ -176,7 +171,8 @@ BOOTSTRAP3 = {
     # Class to indicate error (better to set this in your Django form)
     'error_css_class': 'has-error',
 
-    # Class to indicate success, meaning the field has valid input (better to set this in your Django form)
+    # Class to indicate success, meaning the field has valid input (better
+    # to set this in your Django form)
     'success_css_class': 'has-success',
 
     # Renderers (only set these if you have studied the source and understand the inner workings)
