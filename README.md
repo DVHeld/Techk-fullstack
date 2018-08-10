@@ -98,9 +98,6 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 }]
 ```
 
-#### *Supuestos*
-* Asumo que puedo usar otras librerías, por lo que usaré Django Bootstrap 3 para ofrecer una mejor presentación.
-
 ## Restricciones
 ---
 * No se debe usar el Admin de Django
@@ -109,12 +106,14 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 
 ## Bonus
 ---
-* Uso de alguna librería en el frontend. Idealmente `React`
 * Webscraping usando la librería `Requests` y `BeautifulSoup`
     * Hecho
+* Uso de alguna librería en el frontend. Idealmente `React`
+    * No hecho
 * Uso de `Django Rest Framework` para la comunicación entre frontend y backend
+    * No hecho
 * Uso de test (unittest con [pytest](https://docs.pytest.org/en/latest/))
-    * No creo que lo haga pues nunca he trabajado con este tipo de tests, aunque no tendría problema en aprender a hacerlo. De hecho es probable que lo haga más temprano que tarde por iniciativa propia.
+    * No hecho
 
 
 ## En qué nos fijaremos 
@@ -125,3 +124,24 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 * Patrones de diseño
 * Orden del código
 
+## Conclusiones
+
+* No logré aprender a hacer funcionar el par de librerías que probé -incluyendo `React`- en el tiempo que me quedó luego de hacer funcionar y mejorar el scraper, la BBDD y la vista básica que construí. Tuve problemas instalando y configurando las librerías y el tiempo lamentablemente no me fue suficiente para resolver los problemas que tuve además de para aprender a usar `Django`, `BeautifulSoup` y `Requests`.
+
+    * Considero que con algo de tutoría podría aprender a hacer funcionar `React` o alguna librería similar en alrededor de una semana adicional. Creo que la instalación y configuración me es más complicada de lo que me sería su uso y aplicación propiamente tales. De lo que pude leer en documentación y tutoriales el uso de `React` no parece tan complicado.
+
+* Por lo anterior sólo terminé teniendo una web estática donde automáticamente se lleva a cabo el scraping y se muestran los resultados en tablas que son casi más placeholders que otra cosa, pero al menos muestran datos reales obtenidos desde la BBDD. Dicho de otro modo, logré hacer el scraper, el backend, pero del frontend sólo logré hacer un esqueleto muy básico y apenas funcional para mostrar los datos de la BBDD sin poder interactuar con ellos más allá de eso.
+
+    * Tenía la idea de quizá usar `Bootstrap` para el estilo del frontend, si lograba tener tiempo para ello, ya que la he usado antes y me gustan los resultados que se obtienen usándola. Lamentablemente no logré llegar a ese punto.
+
+* Desde un principio consideré muy probable que terminaría no haciendo unit tests, pues es el tema con el que menos familiarizado estoy. Nunca he trabajado con este tipo de tests, por lo que adrede lo dejé como última prioridad entre los requisitos.
+
+    * No tendría problema en aprender a hacer unit tests. De hecho es probable que lo haga más temprano que tarde por iniciativa propia. Por lo que entiendo no es tan complicado hacerlos.
+
+* Quiero destacar lo cómodo que encontré trabajar con `BeautifulSoup`. Es una librería muy intuitiva de usar, una vez que se aprende las lógicas que usa.
+
+    * Mientras investigaba sobre `BeautifulSoup` me topé con `[Scrapy](https://doc.scrapy.org/)`. No leí mucho al respecto, pero lo poco que ví parecía interesante. Imagino que deben conocerla, pero la menciono en caso que no sea así.
+
+* En general el ejercicio me pareció suficientemente completo y al grano para lo que se requiere hoy en día de un desarrollador fullstack novato. Tiene también suficiente complejidad potencialmente implícita -dependiendo de los supuestos que uno haga o no- como para abordar varios aspectos adicionales que se podrían querer evaluar.
+
+    * Trataré de seguir desarrollando esta aplicación en mi tiempo libre el próximo mes hasta que logre cumplir con todos los requisitos, porque la encuentro un buen ejercicio para aprender a utilizar estas varias tecnologías que encuentro valiosas para mi desarrollo profesional.
