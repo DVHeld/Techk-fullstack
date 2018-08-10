@@ -51,6 +51,7 @@ La información obtenida por el scraper (en la sección anterior) debe ser almac
 
 #### *Supuestos*
 * Sólo se incluirán en la BBDD los datos que contiene el JSON de ejemplo, es decir, no se incluirán campos de fecha de creación o última edición del registro, etc., pues estos no se piden.
+* Se asume que la base de datos debe limpiarse cada vez que se vuelve a recolectar datos.
 
 ### *Frontend*
 
