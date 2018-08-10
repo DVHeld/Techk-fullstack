@@ -1,23 +1,27 @@
-'''Scraper function'''
+'''scraper/scrape.py'''
 from bs4 import BeautifulSoup
 import requests
-from apps.scraper.models import Category, Book
+from .models import Category, Book
 
 def scrape():
-    '''Description
-    The scrape() function scrapes http://books.toscrape.com/index.html and stores the retrieved data
-    to the database.
+    '''Scrapes http://books.toscrape.com/index.html and stores the retrieved data
+    in the database.'''
 
-    Syntax
-    scrape()
+    clear_tables()
 
-    Parameters:
-    This function takes no parameters.
+    base_url = 'http://books.toscrape.com/'
+    req = requests.get(base_url + 'index.html')
+    soup = BeautifulSoup(req.content, 'html.parser')
 
-    Return Value
-    This function does not return anything.'''
+    categories = get_categories(soup)
+    Category.objects.bulk_create(categories)
+    categories = Category.objects.all()
+    books = get_books(soup, categories, base_url)
+    Book.objects.bulk_create(books)
 
-    # Clear all tables of previous data
+def clear_tables():
+    '''Clears all tables of previous data.'''
+
     categories = Category.objects.all()
     if categories:
         categories.delete()
@@ -25,9 +29,8 @@ def scrape():
     if books:
         books.delete()
 
-    base_url = 'http://books.toscrape.com/'
-    req = requests.get(base_url + 'index.html')
-    soup = BeautifulSoup(req.content, 'html.parser')
+def get_categories(soup):
+    '''Obtains categories from soup and returns them in a list.'''
 
     categories = []
     anchor_list = soup.select('a[href*="catalogue/category/"]')
@@ -37,9 +40,10 @@ def scrape():
         if a_href_category not in categories:
             categories.append(Category(name=a_href_category))
 
-    Category.objects.bulk_create(categories)
-    categories = Category.objects.all()
+    return categories
 
+def get_books(soup, categories, base_url):
+    '''Obtains books from soup and returns them in a list.'''
     books = []
     book_list = soup(class_='product_pod')
 
@@ -71,4 +75,4 @@ def scrape():
             upc=book_upc
         ))
 
-    Book.objects.bulk_create(books)
+    return books
