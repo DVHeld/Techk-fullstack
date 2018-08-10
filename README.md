@@ -7,8 +7,8 @@ Por medio de este test se evaluarán algunos de tus conocimientos que nos intere
 ## Instrucciones de uso
 ---
 1. Hacer un fork del proyecto
-2. Instalar cliente de [Docker](https://www.docker.com/)
-3. Instalar [Docker Compose](https://docs.docker.com/compose/)
+2. Instalar cliente de [`Docker`](https://www.docker.com/)
+3. Instalar [`Docker Compose`](https://docs.docker.com/compose/)
 4. Levantar el proyecto:
     * `$ cd path/to/project/fullstack/techk`
     * `$ docker-compose up`
@@ -21,7 +21,7 @@ Por medio de este test se evaluarán algunos de tus conocimientos que nos intere
 ---
 Desarrollar un scraper que permita obtener información de [esta página web](http://books.toscrape.com/index.html), almacenarla en BBDD y luego visualizarla en una interfaz web. 
 
-Lo anterior será bajo el uso del framework [Django 2.0.5](https://www.djangoproject.com/).
+Lo anterior será bajo el uso del framework [`Django` 2.0.5](https://www.djangoproject.com/).
 
 ### *Web Scraping*
 
@@ -37,20 +37,24 @@ Se requiere obtener del [sitio web](http://books.toscrape.com/index.html) la sig
   * Product Description
   * UPC
 
-***Nota:*** Se recomienda usar las librerías [Requests](http://docs.python-requests.org/en/master/) y [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) para resolver este punto.
+***Nota:*** Se recomienda usar las librerías [`Requests`](http://docs.python-requests.org/en/master/) y [`Beautiful Soup`](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) para resolver este punto.
 
 #### *Supuestos*
+
 * Sólo se obtiene la información directamente accesible en el [enlace entregado](http://books.toscrape.com/index.html), es decir, sólo lo que se puede obtener desde la primera página del home. No se obtendrá toda la información que contiene el sitio si no es accesible desde dicho lugar, pues esto es lo que se especificó en las instrucciones. Sólo se obtendrá de forma indirecta la información que se especificó como requerida que no se pueda obtener de forma directa. De todos modos en este caso obtener la información del resto de libros no implicaría mucho trabajo adicional.
+
     * Como corolario se asumirá que no se requiere trabajar con grandes cantidades de datos que a su vez requieran tratamiento especial, por ejemplo para evitar problemas de falta de memoria. Tales casos no son muy difíciles de manejar, si se quisiera hacer.
-* Sólo se almacenará la URL de la thumbnail, pues no se especifica si se requiere almacenar sólo eso o el archivo de imagen propiamente tal, además de que en el JSON de muestra sólo se almacena la URL. Estoy asumiendo el caso más simple, aunque almacenar el archivo de imagen es bastante fácil.
+
+* Sólo se almacenará la URL de la thumbnail, pues no se especifica si se requiere almacenar sólo eso o el archivo de imagen propiamente tal, además de que en el `JSON` de muestra sólo se almacena la URL. Estoy asumiendo el caso más simple, aunque almacenar el archivo de imagen es bastante fácil.
+
 * Se está asumiendo que el sitio web está correcta y consistentemente formateado, es decir, todas las páginas similares están construidas siguiendo los mismos patrones y no hay casos extraños como por ejemplo un libro cuya página no tenga el título, o donde la información como el upc no esté en una tabla con el mismo orden las de los demás libros. En pocas palabras, se asume que los inputs "se portan bien". Tomar en cuenta esos casos requeriría algo de trabajo, pero no mucho, dada la pequeña cantidad de datos que se recolectan.
 
 ### *Backend*
 
-La información obtenida por el scraper (en la sección anterior) debe ser almacenada en una BBDD sqlite. Para ello se debe modelar la BBDD, crear los modelos de Django y sus respectivas migraciones.
+La información obtenida por el scraper (en la sección anterior) debe ser almacenada en una BBDD `sqlite`. Para ello se debe modelar la BBDD, crear los modelos de `Django` y sus respectivas migraciones.
 
 #### *Supuestos*
-* Sólo se incluirán en la BBDD los datos que contiene el JSON de ejemplo, es decir, no se incluirán campos de fecha de creación o última edición del registro, etc., pues estos no se piden.
+* Sólo se incluirán en la BBDD los datos que contiene el `JSON` de ejemplo, es decir, no se incluirán campos de fecha de creación o última edición del registro, etc., pues estos no se piden.
 * Se asume que la base de datos debe limpiarse cada vez que se vuelve a recolectar datos.
 
 ### *Frontend*
@@ -65,10 +69,10 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 * Se debe poder eliminar registros de la tabla que se presente
 
 ***Notas:***
-(*): Si no se dispone de los datos obtenidos por el scraper, debido a la no realización de esta etapa, los datos deben ser ser cargados desde un archivo en formato JSON. Este archivo debe contener la información mínima para que la interfaz web funcione correctamente, es decir:
+(*): Si no se dispone de los datos obtenidos por el scraper, debido a la no realización de esta etapa, los datos deben ser ser cargados desde un archivo en formato `JSON`. Este archivo debe contener la información mínima para que la interfaz web funcione correctamente, es decir:
 * Al menos 3 categorías
 * Al menos 5 libros por categoría
-* Estructura del archivo JSON es de la siguiente forma:
+* Estructura del archivo `JSON` es de la siguiente forma:
 ```
 [{
     "categories": [
@@ -100,8 +104,8 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 
 ## Restricciones
 ---
-* No se debe usar el Admin de Django
-* Usar ORM de Django (no raw queries)
+* No se debe usar el Admin de `Django`
+* Usar ORM de `Django` (no raw queries)
 
 
 ## Bonus
@@ -112,7 +116,7 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
     * No hecho
 * Uso de `Django Rest Framework` para la comunicación entre frontend y backend
     * No hecho
-* Uso de test (unittest con [pytest](https://docs.pytest.org/en/latest/))
+* Uso de test (unittest con [`pytest`](https://docs.pytest.org/en/latest/))
     * No hecho
 
 
@@ -140,7 +144,7 @@ La información obtenida por el scraper debe ser presentada en forma de tabla. E
 
 * Quiero destacar lo cómodo que encontré trabajar con `BeautifulSoup`. Es una librería muy intuitiva de usar, una vez que se aprende las lógicas que usa.
 
-    * Mientras investigaba sobre `BeautifulSoup` me topé con `[Scrapy](https://doc.scrapy.org/)`. No leí mucho al respecto, pero lo poco que ví parecía interesante. Imagino que deben conocerla, pero la menciono en caso que no sea así.
+    * Mientras investigaba sobre `BeautifulSoup` me topé con [`Scrapy`](https://doc.scrapy.org/). No leí mucho al respecto, pero lo poco que ví parecía interesante. Imagino que deben conocerla, pero la menciono en caso que no sea así.
 
 * En general el ejercicio me pareció suficientemente completo y al grano para lo que se requiere hoy en día de un desarrollador fullstack novato. Tiene también suficiente complejidad potencialmente implícita -dependiendo de los supuestos que uno haga o no- como para abordar varios aspectos adicionales que se podrían querer evaluar.
 
